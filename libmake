@@ -1,0 +1,21 @@
+CC=gcc -g
+CFLAGS=-c 
+SOURCES=fileOps.c logOps.c gmpOps.c timeOps.c encodeOps.c decodeOps.c superOps.c misc.c wrapper.c blocksort.c Initilize.c runArunB.c
+OBJECTS=$(SOURCES:.c=.o)
+INCLUDES=-I/usr/include -I/home/neeraj/code/ROCK
+LIBS=-L./ -lgmp
+OUT=libVajra.a
+#EXE=mtf
+
+LDFLAGS=-g
+
+default: $(OUT)
+
+.c.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+$(OUT):		$(OBJECTS)
+	ar rcs $(OUT) $(OBJECTS)
+
+clean: 
+	rm -rf $(OBJECTS) $(OUT)

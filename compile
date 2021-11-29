@@ -1,0 +1,3 @@
+./clean
+make -f libmake
+make clean all
